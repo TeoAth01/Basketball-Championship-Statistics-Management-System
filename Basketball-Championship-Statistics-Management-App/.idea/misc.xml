@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Files/GitHub/Basketball-Championship-Statistics-Management-System/Basketball-Championship-Statistics-Management-App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.141" />
+        <entry key="..\:/Files/GitHub/Basketball-Championship-Statistics-Management-System/Basketball-Championship-Statistics-Management-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.141" />
         <entry key="..\:/Files/GitHub/Basketball-Championship-Statistics-Management-System/Basketball-Championship-Statistics-Management-App/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Files/GitHub/Basketball-Championship-Statistics-Management-System/Basketball-Championship-Statistics-Management-App/app/src/main/res/layout/activity_test.xml" value="0.1403985507246377" />
+        <entry key="..\:/Files/GitHub/Basketball-Championship-Statistics-Management-System/Basketball-Championship-Statistics-Management-App/app/src/main/res/layout/show_team_statistics.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:background="@color/orange"
+                android:id="@+id/teams"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEAMS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                />
+
+            <TextView
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:id="@+id/STANDINGS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STANDINGS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/teams" />
+
+
+
+            <TextView
+                android:background="@color/orange"
+                android:id="@+id/FTA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FTA"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/STANDINGS"/>
+
+            <TextView
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:id="@+id/FTM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FTM"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/FTA" />
+
+            <TextView
+                android:background="@color/orange"
+                android:id="@+id/P2A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2PA"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/FTM"/>
+
+            <TextView
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:id="@+id/P2M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2PM"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/P2A" />
+
+            <TextView
+                android:background="@color/orange"
+                android:id="@+id/P3A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3PA"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/P2M"/>
+
+            <TextView
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:id="@+id/P3M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3PM"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/P3A" />
+
+            <TextView
+                android:background="@color/orange"
+                android:id="@+id/ASSISTS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ASSISTS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/P3M" />
+            <TextView
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:id="@+id/REBOUNDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REBOUNDS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/ASSISTS" />
+            <TextView
+                android:background="@color/orange"
+                android:id="@+id/BLOCKS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BLOCKS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/REBOUNDS" />
+            <TextView
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:id="@+id/STEALS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STEALS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/BLOCKS" />
+            <TextView
+                android:background="@color/orange"
+                android:id="@+id/TURNOVERS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TURNOVERS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/STEALS" />
+            <TextView
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:id="@+id/FOULS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FOULS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/TURNOVER" />
+            <TextView
+                android:background="@color/orange"
+                android:id="@+id/POINTS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="POINTS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toEndOf="@+id/FOULS" />
+
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
