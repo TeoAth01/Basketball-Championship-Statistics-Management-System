@@ -3,12 +3,11 @@ package com.example.basketballstats;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
 
 public class MatchSelection extends AppCompatActivity {
 
@@ -16,11 +15,12 @@ public class MatchSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_selection);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         TextView home = (TextView) findViewById(R.id.homeTeam);
         TextView away = (TextView) findViewById(R.id.awayTeam);
-        BottomAppBar button = (BottomAppBar)  findViewById(R.id.matchButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String str1 = home.getText().toString();
@@ -29,8 +29,8 @@ public class MatchSelection extends AppCompatActivity {
                 intent.putExtra("String 1", str1);
                 intent.putExtra("String 2", str2);
                 startActivity(intent);
-
             }
         });
+
     }
 }
