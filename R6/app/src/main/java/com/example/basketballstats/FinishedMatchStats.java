@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,49 +97,53 @@ public class FinishedMatchStats extends AppCompatActivity {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public class InfoAsyncTask extends AsyncTask<Void, Void, Map<String, String>> {
+    public class InfoAsyncTask extends AsyncTask<String, Void, ArrayList<ArrayList<String>>>  {
         @Override
-        protected Map<String, String> doInBackground(Void... voids) {
+        protected ArrayList<ArrayList<String>>  doInBackground(String... String) {
             Intent intent = getIntent();
             String str1 = intent.getStringExtra("String 1");
             String str2 = intent.getStringExtra("String 2");
-            Map<String, String> info = new HashMap<>();
+            ArrayList<ArrayList<String>> info = new ArrayList<ArrayList<String>>();
 
             try (Connection connection = DriverManager.getConnection("jdbc:mariadb://192.168.2.8/omada 18","username","password")) {
-
+                info.add(new ArrayList<String>());
                 String sql = "SELECT * FROM matches WHERE HOME='"+str1+"' AND AWAY='"+str2+"'";
                 PreparedStatement statement = connection.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery();
-
+                int databaseColumnCount = resultSet.getMetaData().getColumnCount();
                 if (resultSet.next()) {
-                    info.put("HOME", resultSet.getString("HOME"));
-                    info.put("AWAY", resultSet.getString("AWAY"));
-                    info.put("HOME FTA", resultSet.getString("HOME FTA"));
-                    info.put("AWAY FTA", resultSet.getString("AWAY FTA"));
-                    info.put("HOME FTM", resultSet.getString("HOME FTM"));
-                    info.put("AWAY FTM", resultSet.getString("AWAY FTM"));
-                    info.put("HOME 2PA", resultSet.getString("HOME 2PA"));
-                    info.put("AWAY 2PA", resultSet.getString("AWAY 2PA"));
-                    info.put("HOME 2PM", resultSet.getString("HOME 2PM"));
-                    info.put("AWAY 2PM", resultSet.getString("AWAY 2PM"));
-                    info.put("HOME 3PA", resultSet.getString("HOME 3PA"));
-                    info.put("AWAY 3PA", resultSet.getString("AWAY 3PA"));
-                    info.put("HOME 3PM", resultSet.getString("HOME 3PM"));
-                    info.put("AWAY 3PM", resultSet.getString("AWAY 3PM"));
-                    info.put("HOME ASSIST", resultSet.getString("HOME ASSIST"));
-                    info.put("AWAY ASSIST", resultSet.getString("AWAY ASSIST"));
-                    info.put("HOME REBOUND", resultSet.getString("HOME REBOUND"));
-                    info.put("AWAY REBOUND", resultSet.getString("AWAY REBOUND"));
-                    info.put("HOME BLOCK", resultSet.getString("HOME BLOCK"));
-                    info.put("AWAY BLOCK", resultSet.getString("AWAY BLOCK"));
-                    info.put("HOME STEAL", resultSet.getString("HOME STEAL"));
-                    info.put("AWAY STEAL", resultSet.getString("AWAY STEAL"));
-                    info.put("HOME TURNOVER", resultSet.getString("HOME TURNOVER"));
-                    info.put("AWAY TURNOVER", resultSet.getString("AWAY TURNOVER"));
-                    info.put("HOME FOUL", resultSet.getString("HOME FOUL"));
-                    info.put("AWAY FOUL", resultSet.getString("AWAY FOUL"));
-                    info.put("HOME POINTS", resultSet.getString("HOME POINTS"));
-                    info.put("AWAY POINTS", resultSet.getString("AWAY POINTS"));
+                    for (int j = 0; j < databaseColumnCount; j++) {
+                        info.get(0).add(resultSet.getString(j+1));
+                    }
+//                    info.put("HOME", resultSet.getString("HOME"));
+//                    info.put("AWAY", resultSet.getString("AWAY"));
+//                    info.put("HOME FTA", resultSet.getString("HOME FTA"));
+//                    info.put("AWAY FTA", resultSet.getString("AWAY FTA"));
+//                    info.put("HOME FTM", resultSet.getString("HOME FTM"));
+//                    info.put("AWAY FTM", resultSet.getString("AWAY FTM"));
+//                    info.put("HOME 2PA", resultSet.getString("HOME 2PA"));
+//                    info.put("AWAY 2PA", resultSet.getString("AWAY 2PA"));
+//                    info.put("HOME 2PM", resultSet.getString("HOME 2PM"));
+//                    info.put("AWAY 2PM", resultSet.getString("AWAY 2PM"));
+//                    info.put("HOME 3PA", resultSet.getString("HOME 3PA"));
+//                    info.put("AWAY 3PA", resultSet.getString("AWAY 3PA"));
+//                    info.put("HOME 3PM", resultSet.getString("HOME 3PM"));
+//                    info.put("AWAY 3PM", resultSet.getString("AWAY 3PM"));
+//                    info.put("HOME ASSIST", resultSet.getString("HOME ASSIST"));
+//                    info.put("AWAY ASSIST", resultSet.getString("AWAY ASSIST"));
+//                    info.put("HOME REBOUND", resultSet.getString("HOME REBOUND"));
+//                    info.put("AWAY REBOUND", resultSet.getString("AWAY REBOUND"));
+//                    info.put("HOME BLOCK", resultSet.getString("HOME BLOCK"));
+//                    info.put("AWAY BLOCK", resultSet.getString("AWAY BLOCK"));
+//                    info.put("HOME STEAL", resultSet.getString("HOME STEAL"));
+//                    info.put("AWAY STEAL", resultSet.getString("AWAY STEAL"));
+//                    info.put("HOME TURNOVER", resultSet.getString("HOME TURNOVER"));
+//                    info.put("AWAY TURNOVER", resultSet.getString("AWAY TURNOVER"));
+//                    info.put("HOME FOUL", resultSet.getString("HOME FOUL"));
+//                    info.put("AWAY FOUL", resultSet.getString("AWAY FOUL"));
+//                    info.put("HOME POINTS", resultSet.getString("HOME POINTS"));
+//                    info.put("AWAY POINTS", resultSet.getString("AWAY POINTS"));
+
                 }
 
                 String sql2 = "SELECT Logo FROM teams WHERE name = '"+str1+"'";
@@ -146,8 +151,7 @@ public class FinishedMatchStats extends AppCompatActivity {
                 ResultSet resultSet2 = statement2.executeQuery();
 
                 if (resultSet2.next()) {
-                    info.put("homeLogo", resultSet2.getString("Logo"));
-
+                    info.get(0).add(resultSet2.getString(1));
                 }
 
                 String sql3 = "SELECT Logo FROM teams WHERE name = '"+str2+"'";
@@ -155,7 +159,7 @@ public class FinishedMatchStats extends AppCompatActivity {
                 ResultSet resultSet3 = statement3.executeQuery();
 
                 if (resultSet3.next()) {
-                    info.put("awayLogo", resultSet3.getString("Logo"));
+                    info.get(0).add(resultSet3.getString(1));
                 }
 
             } catch (Exception e) {
@@ -166,9 +170,9 @@ public class FinishedMatchStats extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Map<String, String> result) {
+        protected void onPostExecute(ArrayList<ArrayList<String>> result) {
             if (!result.isEmpty()) {
-
+                int cols = result.get(0).size();
                 TextView homeName = (TextView) findViewById(R.id.homeTeam_Name);
                 TextView awayName = (TextView) findViewById(R.id.awayTeam_Name);
                 ImageView homeImage = (ImageView) findViewById(R.id.homeTeam_Logo);
@@ -194,30 +198,58 @@ public class FinishedMatchStats extends AppCompatActivity {
                 TextView home3pt = (TextView) findViewById(R.id.home3PTS);
                 TextView away3pt = (TextView) findViewById(R.id.away3PTS);
 
-                Picasso.with(getApplicationContext()).load(result.get("homeLogo")).into(homeImage);
-                Picasso.with(getApplicationContext()).load(result.get("awayLogo")).into(awayImage);
-                homeName.setText(result.get("HOME"));
-                awayName.setText(result.get("AWAY"));
-                homePoints.setText(result.get("HOME POINTS"));
-                awayPoints.setText(result.get("AWAY POINTS"));
-                homeAssists.setText(result.get("HOME ASSIST"));
-                awayAssists.setText(result.get("AWAY ASSIST"));
-                homeRebounds.setText(result.get("HOME REBOUND"));
-                awayRebounds.setText(result.get("AWAY REBOUND"));
-                homeBlocks.setText(result.get("HOME BLOCK"));
-                awayBlocks.setText(result.get("AWAY BLOCK"));
-                homeSteals.setText(result.get("HOME STEAL"));
-                awaySteals.setText(result.get("AWAY STEAL"));
-                homeTurnovers.setText(result.get("HOME TURNOVER"));
-                awayTurnovers.setText(result.get("AWAY TURNOVER"));
-                homeFouls.setText(result.get("HOME FOUL"));
-                awayFouls.setText(result.get("AWAY FOUL"));
-                homeFT.setText(result.get("HOME FTM")+"/"+result.get("HOME FTA"));
-                awayFT.setText(result.get("AWAY FTM")+"/"+result.get("AWAY FTA"));
-                home2pt.setText(result.get("HOME 2PM")+"/"+result.get("HOME 2PA"));
-                away2pt.setText(result.get("AWAY 2PM")+"/"+result.get("AWAY 2PA"));
-                home3pt.setText(result.get("HOME 3PM")+"/"+result.get("HOME 3PA"));
-                away3pt.setText(result.get("AWAY 3PM")+"/"+result.get("AWAY 3PA"));
+
+                homeName.setText(result.get(0).get(1));
+                awayName.setText(result.get(0).get(2));
+                homeFT.setText(result.get(0).get(5)+"/"+result.get(0).get(3));
+                awayFT.setText(result.get(0).get(6)+"/"+result.get(0).get(4));
+                home2pt.setText(result.get(0).get(9)+"/"+result.get(0).get(7));
+                away2pt.setText(result.get(0).get(10)+"/"+result.get(0).get(8));
+                home3pt.setText(result.get(0).get(13)+"/"+result.get(0).get(11));
+                away3pt.setText(result.get(0).get(14)+"/"+result.get(0).get(12));
+                homeAssists.setText(result.get(0).get(15));
+                awayAssists.setText(result.get(0).get(16));
+                homeRebounds.setText(result.get(0).get(17));
+                awayRebounds.setText(result.get(0).get(18));
+                homeBlocks.setText(result.get(0).get(19));
+                awayBlocks.setText(result.get(0).get(20));
+                homeSteals.setText(result.get(0).get(21));
+                awaySteals.setText(result.get(0).get(22));
+                homeTurnovers.setText(result.get(0).get(23));
+                awayTurnovers.setText(result.get(0).get(24));
+                homeFouls.setText(result.get(0).get(25));
+                awayFouls.setText(result.get(0).get(26));
+                homePoints.setText(result.get(0).get(27));
+                awayPoints.setText(result.get(0).get(28));
+                Picasso.with(getApplicationContext()).load(result.get(0).get(30)).into(homeImage);
+                Picasso.with(getApplicationContext()).load(result.get(0).get(31)).into(awayImage);
+
+
+
+//                homeName.setText(result.get("HOME"));
+//                awayName.setText(result.get("AWAY"));
+//                homePoints.setText(result.get("HOME POINTS"));
+//                awayPoints.setText(result.get("AWAY POINTS"));
+//                homeAssists.setText(result.get("HOME ASSIST"));
+//                awayAssists.setText(result.get("AWAY ASSIST"));
+//                homeRebounds.setText(result.get("HOME REBOUND"));
+//                awayRebounds.setText(result.get("AWAY REBOUND"));
+//                homeBlocks.setText(result.get("HOME BLOCK"));
+//                awayBlocks.setText(result.get("AWAY BLOCK"));
+//                homeSteals.setText(result.get("HOME STEAL"));
+//                awaySteals.setText(result.get("AWAY STEAL"));
+//                homeTurnovers.setText(result.get("HOME TURNOVER"));
+//                awayTurnovers.setText(result.get("AWAY TURNOVER"));
+//                homeFouls.setText(result.get("HOME FOUL"));
+//                awayFouls.setText(result.get("AWAY FOUL"));
+//                homeFT.setText(result.get("HOME FTM")+"/"+result.get("HOME FTA"));
+//                awayFT.setText(result.get("AWAY FTM")+"/"+result.get("AWAY FTA"));
+//                home2pt.setText(result.get("HOME 2PM")+"/"+result.get("HOME 2PA"));
+//                away2pt.setText(result.get("AWAY 2PM")+"/"+result.get("AWAY 2PA"));
+//                home3pt.setText(result.get("HOME 3PM")+"/"+result.get("HOME 3PA"));
+//                away3pt.setText(result.get("AWAY 3PM")+"/"+result.get("AWAY 3PA"));
+
+
             }
         }
     }
