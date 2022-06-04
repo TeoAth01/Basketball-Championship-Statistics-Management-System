@@ -103,26 +103,31 @@ public class FinishedMatchStats extends AppCompatActivity {
                     info.add(namesAndPoints);
                 }
 
-                String sql4 = "SELECT Logo FROM teams WHERE name = '"+str1+"'";
-                PreparedStatement statement4 = connection.prepareStatement(sql4);
-                ResultSet resultSet4 = statement4.executeQuery();
-                int databaseColumnCount4 = resultSet4.getMetaData().getColumnCount();
-                if (resultSet4.next()) {
-                    for (int j = 0; j < databaseColumnCount4; j++) {
-                        logos.add(resultSet4.getString(j + 1));
+                if(!info.isEmpty()){
+                    String sql4 = "SELECT Logo FROM teams WHERE name = '"+str1+"'";
+                    PreparedStatement statement4 = connection.prepareStatement(sql4);
+                    ResultSet resultSet4 = statement4.executeQuery();
+                    int databaseColumnCount4 = resultSet4.getMetaData().getColumnCount();
+                    if (resultSet4.next()) {
+                        for (int j = 0; j < databaseColumnCount4; j++) {
+                            logos.add(resultSet4.getString(j + 1));
+                        }
+                    }
+
+                    String sql5 = "SELECT Logo FROM teams WHERE name = '"+str2+"'";
+                    PreparedStatement statement5 = connection.prepareStatement(sql5);
+                    ResultSet resultSet5 = statement5.executeQuery();
+                    int databaseColumnCount5 = resultSet5.getMetaData().getColumnCount();
+                    if (resultSet5.next()) {
+                        for (int j = 0; j < databaseColumnCount5; j++) {
+                            logos.add(resultSet5.getString(j + 1));
+                        }
+                        info.add(logos);
                     }
                 }
 
-                String sql5 = "SELECT Logo FROM teams WHERE name = '"+str2+"'";
-                PreparedStatement statement5 = connection.prepareStatement(sql5);
-                ResultSet resultSet5 = statement5.executeQuery();
-                int databaseColumnCount5 = resultSet5.getMetaData().getColumnCount();
-                if (resultSet5.next()) {
-                    for (int j = 0; j < databaseColumnCount5; j++) {
-                        logos.add(resultSet5.getString(j + 1));
-                    }
-                    info.add(logos);
-                }
+
+
 
             } catch (Exception e) {
                 Log.e("InfoAsyncTask", "Error reading school information", e);
