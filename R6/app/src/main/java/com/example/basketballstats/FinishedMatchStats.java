@@ -48,6 +48,7 @@ public class FinishedMatchStats extends AppCompatActivity {
             String str2 = intent.getStringExtra("String 2");
 
             ArrayList<ArrayList<String>> info = new ArrayList<ArrayList<String>>();
+            ArrayList<String> statsNames = new ArrayList<String>();
             ArrayList<String> namesAndPoints = new ArrayList<String>();
             ArrayList<String> home = new ArrayList<String>();
             ArrayList<String> away = new ArrayList<String>();
@@ -55,8 +56,21 @@ public class FinishedMatchStats extends AppCompatActivity {
 
 
             try (Connection connection = DriverManager.getConnection("jdbc:mariadb://192.168.2.8/omada 18","username","password")) {
+
+                //Getting StatsNames from database
+                String sql0 = "SELECT FTA,FTM,2PA,2PM,3PA,3PM,Blocks,Turnovers,Fouls,Steals,Rebounds,Asissts FROM teams";
+                PreparedStatement statement0 = connection.prepareStatement(sql0);
+                ResultSet resultSet0 = statement0.executeQuery();
+                int databaseColumnCount0 = resultSet0.getMetaData().getColumnCount();
+                if(resultSet0.next()){
+                    for (int j = 0; j < databaseColumnCount0; j++) {
+                        statsNames.add(resultSet0.getMetaData().getColumnName(j+1));
+                    }
+                    info.add(statsNames);
+                }
+
                 //Getting Home Teams Stats From Database
-                String sql = "SELECT HFTA,HFTM,H2PA,H2PM,H3PA,H3PM,HBLOCK,HTURNOVER,HFOUL,HSTEAL,HREBOUND,HASSIST FROM matches WHERE HOME='"+str1+"' AND AWAY='"+str2+"'";
+                String sql = "SELECT HFTA,HFTM,H2PA,H2PM,H3PA,H3PM,HBlocks,HTurnovers,HFouls,HSteals,HRebounds,HAssists FROM matches WHERE HOME='"+str1+"' AND AWAY='"+str2+"'";
                 PreparedStatement statement = connection.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery();
                 int databaseColumnCount = resultSet.getMetaData().getColumnCount();
@@ -68,7 +82,7 @@ public class FinishedMatchStats extends AppCompatActivity {
                 }
 
                 //Getting Home Teams Stats From Databse
-                String sql2 = "SELECT AFTA,AFTM,A2PA,A2PM,A3PA,A3PM,ABLOCK,ATURNOVER,AFOUL,ASTEAL,AREBOUND,AASSIST FROM matches WHERE HOME='"+str1+"' AND AWAY='"+str2+"'";
+                String sql2 = "SELECT AFTA,AFTM,A2PA,A2PM,A3PA,A3PM,ABlocks,ATurnovers,AFouls,ASteals,ARebounds,AAssists FROM matches WHERE HOME='"+str1+"' AND AWAY='"+str2+"'";
                 PreparedStatement statement2 = connection.prepareStatement(sql2);
                 ResultSet resultSet2 = statement2.executeQuery();
                 int databaseColumnCount1 = resultSet2.getMetaData().getColumnCount();
@@ -80,7 +94,7 @@ public class FinishedMatchStats extends AppCompatActivity {
                 }
 
                 //Getting Points and Names for both home and away teams from database
-                String sql3 = "SELECT HOME,HPOINTS,AWAY,APOINTS FROM matches WHERE HOME='"+str1+"' AND AWAY='"+str2+"'";
+                String sql3 = "SELECT HOME,HPoints,AWAY,APoints FROM matches WHERE HOME='"+str1+"' AND AWAY='"+str2+"'";
                 PreparedStatement statement3 = connection.prepareStatement(sql3);
                 ResultSet resultSet3 = statement3.executeQuery();
                 int databaseColumnCount2 = resultSet3.getMetaData().getColumnCount();
@@ -92,7 +106,7 @@ public class FinishedMatchStats extends AppCompatActivity {
                 }
 
                 //Getting both teams logos from database
-                if(!info.isEmpty()){
+                if(!(info.size()==1)){
                     String sql4 = "SELECT Logo FROM teams WHERE name = '"+str1+"'";
                     PreparedStatement statement4 = connection.prepareStatement(sql4);
                     ResultSet resultSet4 = statement4.executeQuery();
@@ -136,40 +150,23 @@ public class FinishedMatchStats extends AppCompatActivity {
             ListView lv1 = (ListView) findViewById(R.id.awayList);
             ListView lv2 = findViewById(R.id.list);
 
+            ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(getApplicationContext(), R.layout.row, result.get(0));
+            lv2.setAdapter(arrayAdapter2);
 
-            if (!result.isEmpty()) {
+            if (!(result.size()==1)) {
                 //Filling ListViews
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.row, result.get(0));
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.row, result.get(1));
                 lv.setAdapter(arrayAdapter);
 
-
-                ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(getApplicationContext(), R.layout.row, result.get(1));
+                ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(getApplicationContext(), R.layout.row, result.get(2));
                 lv1.setAdapter(arrayAdapter1);
 
-                ArrayList<String> a = new ArrayList<String>();
-                a.add("FTA");
-                a.add("FTM");
-                a.add("2PA");
-                a.add("2PM");
-                a.add("3PA");
-                a.add("3PM");
-                a.add("BLOCKS");
-                a.add("TURNOVERS");
-                a.add("FOULS");
-                a.add("STEALS");
-                a.add("REBOUNDS");
-                a.add("ASSISTS");
-
-                ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(getApplicationContext(), R.layout.row, a);
-                lv2.setAdapter(arrayAdapter2);
-
-
-                homeName.setText(result.get(2).get(0));
-                homePoints.setText(result.get(2).get(1));
-                awayName.setText(result.get(2).get(2));
-                awayPoints.setText(result.get(2).get(3));
-                Picasso.with(getApplicationContext()).load(result.get(3).get(0)).into(homeImage);
-                Picasso.with(getApplicationContext()).load(result.get(3).get(1)).into(awayImage);
+                homeName.setText(result.get(3).get(0));
+                homePoints.setText(result.get(3).get(1));
+                awayName.setText(result.get(3).get(2));
+                awayPoints.setText(result.get(3).get(3));
+                Picasso.with(getApplicationContext()).load(result.get(4).get(0)).into(homeImage);
+                Picasso.with(getApplicationContext()).load(result.get(4).get(1)).into(awayImage);
             }
 
             //Managing Scrolling On ListViews
