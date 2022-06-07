@@ -28,6 +28,7 @@ import java.util.Map;
 public class FinishedMatchStats extends AppCompatActivity {
     private boolean isLeftListEnabled = true;
     private boolean isRightListEnabled = true;
+    private boolean isMiddleListEnabled = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -133,7 +134,7 @@ public class FinishedMatchStats extends AppCompatActivity {
 
 
             } catch (Exception e) {
-                Log.e("InfoAsyncTask", "Error reading school information", e);
+                Log.e("InfoAsyncTask", "Error reading Match Information", e);
             }
             return info;
         }
@@ -175,7 +176,6 @@ public class FinishedMatchStats extends AppCompatActivity {
             lv2.setOverScrollMode(ListView.OVER_SCROLL_NEVER);
 
             lv.setOnScrollListener(new AbsListView.OnScrollListener() {
-
                 @Override
                 public void onScrollStateChanged(AbsListView view, int scrollState) {
                     // onScroll will be called and there will be an infinite loop.
@@ -186,12 +186,11 @@ public class FinishedMatchStats extends AppCompatActivity {
                         isRightListEnabled = true;
                     }
                 }
-
                 @Override
                 public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
                                      int totalItemCount) {
                     View c = view.getChildAt(0);
-                    if (c != null && isLeftListEnabled) {
+                    if (c != null && isLeftListEnabled && isMiddleListEnabled) {
                         lv1.setSelectionFromTop(firstVisibleItem, c.getTop());
                         lv2.setSelectionFromTop(firstVisibleItem,c.getTop());
                     }
@@ -212,7 +211,7 @@ public class FinishedMatchStats extends AppCompatActivity {
                 public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
                                      int totalItemCount) {
                     View c = view.getChildAt(0);
-                    if (c != null && isRightListEnabled) {
+                    if (c != null && isRightListEnabled && isMiddleListEnabled) {
                         lv.setSelectionFromTop(firstVisibleItem, c.getTop());
                         lv2.setSelectionFromTop(firstVisibleItem,c.getTop());
                     }
@@ -226,9 +225,9 @@ public class FinishedMatchStats extends AppCompatActivity {
                     // onScroll will be called and there will be an infinite loop.
                     // That's why i set a boolean value
                     if (scrollState == SCROLL_STATE_TOUCH_SCROLL) {
-                        isRightListEnabled = false;
+                        isMiddleListEnabled = false;
                     } else if (scrollState == SCROLL_STATE_IDLE) {
-                        isRightListEnabled = true;
+                        isMiddleListEnabled = true;
                     }
                 }
 
@@ -236,12 +235,14 @@ public class FinishedMatchStats extends AppCompatActivity {
                 public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
                                      int totalItemCount) {
                     View c = view.getChildAt(0);
-                    if (c != null && isLeftListEnabled) {
+                    if (c != null && isLeftListEnabled && isRightListEnabled) {
                         lv.setSelectionFromTop(firstVisibleItem, c.getTop());
                         lv1.setSelectionFromTop(firstVisibleItem, c.getTop());
                     }
                 }
             });
+
+
         }
     }
 }

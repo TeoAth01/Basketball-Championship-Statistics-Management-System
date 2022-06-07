@@ -3,6 +3,7 @@ package com.example.basketballstats;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -20,7 +21,9 @@ public class MatchSelection extends AppCompatActivity {
 
         TextView home = (TextView) findViewById(R.id.homeTeam);
         TextView away = (TextView) findViewById(R.id.awayTeam);
-        home.setOnClickListener(new View.OnClickListener() {
+        Button button = (Button) findViewById(R.id.b);
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String str1 = home.getText().toString();
