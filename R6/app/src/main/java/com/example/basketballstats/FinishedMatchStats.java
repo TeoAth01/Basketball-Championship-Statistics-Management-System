@@ -150,7 +150,6 @@ public class FinishedMatchStats extends AppCompatActivity {
             ListView lv = (ListView) findViewById(R.id.homeList);
             ListView lv1 = (ListView) findViewById(R.id.awayList);
             ListView lv2 = findViewById(R.id.list);
-
             ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(getApplicationContext(), R.layout.row, result.get(0));
             lv2.setAdapter(arrayAdapter2);
 
@@ -241,8 +240,6 @@ public class FinishedMatchStats extends AppCompatActivity {
                     }
                 }
             });
-
-
         }
     }
 }

@@ -6,4 +6,5 @@
     android:textSize= "18sp"
     android:gravity="center"
     android:textColor="#FFFFFF"
+    android:focusable="true"
     />
