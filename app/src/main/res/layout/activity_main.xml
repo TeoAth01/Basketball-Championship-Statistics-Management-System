@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"><![CDATA[
+    tools:context=".MainActivity">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ]]>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score_imageButton"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="@string/statistics_imageButton"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/games_imageButton"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
+
+    <ImageButton
+        android:id="@+id/score_imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/statistics_imageButton"
+        tools:srcCompat="@tools:sample/avatars"
+        android:background="@drawable/score"/>
+
+    <ImageButton
+        android:id="@+id/games_imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/statistics_imageButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/players_imageButton"
+        tools:srcCompat="@tools:sample/avatars"
+        android:background="@drawable/games"/>
+
+    <ImageButton
+        android:id="@+id/players_imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/games_imageButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:background="@drawable/players"/>
+
+    <ImageButton
+        android:id="@+id/statistics_imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/score_imageButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/games_imageButton"
+        tools:srcCompat="@tools:sample/avatars"
+        android:background="@drawable/statistic"/>
+
+    <TextView
+        android:id="@+id/textView_9th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΗΡΑΚΛΗΣ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_9th"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_8th" />
+
+    <TextView
+        android:id="@+id/bathmologia_9th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="20"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_8th" />
+
+    <TextView
+        android:id="@+id/textView_8th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΑΠΟΛΛΩΝ Π."
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_8th"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_7th" />
+
+    <TextView
+        android:id="@+id/bathmologia_8th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="22"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_7th" />
+
+    <TextView
+        android:id="@+id/textView_7th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΟΛΥΜΠΙΑΚΟΣ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_7th"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_6th" />
+
+    <TextView
+        android:id="@+id/bathmologia_7th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="24"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_6th" />
+
+    <TextView
+        android:id="@+id/textView_6th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΚΟΛΟΣΣΟΣ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_6th"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_5th" />
+
+    <TextView
+        android:id="@+id/bathmologia_6th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="24"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_5th" />
+
+    <TextView
+        android:id="@+id/textView_5th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΑΡΗΣ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_5th"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_4th" />
+
+    <TextView
+        android:id="@+id/bathmologia_5th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="25"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_4th" />
+
+    <TextView
+        android:id="@+id/textView_4th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΑΕΚ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_4th"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_3rd" />
+
+    <TextView
+        android:id="@+id/bathmologia_4th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="25"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_3rd" />
+
+    <TextView
+        android:id="@+id/textView_3rd"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΠΕΡΙΣΤΕΡΙ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_3rd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_2nd" />
+
+    <TextView
+        android:id="@+id/bathmologia_3rd"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="27"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_2nd" />
+
+    <TextView
+        android:id="@+id/textView_2nd"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΛΑΡΙΣΑ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_2nd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_1st" />
+
+    <TextView
+        android:id="@+id/bathmologia_2nd"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="29"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_1st2" />
+
+    <TextView
+        android:id="@+id/textView_1st"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="10dp"
+        android:text="ΠΑΝΑΘΗΝΑΪΚΟΣ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_1st2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bathmologia_1st2"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="10dp"
+        android:text="31"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:background="@drawable/top5"
+        android:text="TOP 5"
+        android:textColor="@color/white"
+        android:textColorHighlight="#03A9F4"
+        android:textColorLink="#00BCD4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/games_imageButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_10th" />
+
+    <TextView
+        android:id="@+id/textView_10th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="ΠΡΟΜΗΘΕΑΣ"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bathmologia_10th"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_9th" />
+
+    <TextView
+        android:id="@+id/bathmologia_10th"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="3dp"
+        android:text="19"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bathmologia_9th" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="@string/players_imageButton"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

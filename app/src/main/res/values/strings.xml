@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Βαθμολογίες</string>
+    <string name="players_imageButton">Παίκτες</string>
+    <string name="games_imageButton">Αγώνες</string>
+    <string name="statistics_imageButton">Στατιστικά</string>
+    <string name="score_imageButton">Βαθμολογία</string>
+</resources>
